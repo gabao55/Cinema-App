@@ -1,0 +1,25 @@
+.success-message {
+    line-height: 28px;
+    letter-spacing: 0.4px;
+    font-weight: 700;
+    color: #247A6B;
+    text-align: center;
+}
+
+.purchase-info {
+    width: calc(100% - 48px);
+    padding: 0 24px;
+    margin-bottom: 30px;
+    color: #293845;
+}
+
+.purchase-info b {
+    margin-bottom: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    display: block;
+}
+
+.purchase-info p {
+    font-size: 22px;
+}

@@ -1,5 +1,5 @@
 import "./style.css";
-import movie from "./assets/image 3.png";
+import movie from "../assets/image 3.png";
 
 export default function Home() {
     return (

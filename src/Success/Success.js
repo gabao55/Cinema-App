@@ -1,7 +1,26 @@
+import Button from "../Button/Button";
+import "./style.css";
+
 export default function Success() {
     return (
-        <>
-            <h2>Success</h2>
-        </>
+        <div className="content-container">
+            <h2 className="success-message">Pedido feito<br /> com sucesso</h2>
+            <div className="purchase-info">
+                <b>Filme e sessão</b>
+                <p>Enola Holmes</p>
+                <p>24/06/2022 15:00</p>
+            </div>
+            <div className="purchase-info">
+                <b>Ingressos</b>
+                <p>Assento 15</p>
+                <p>Assento 16</p>
+            </div>
+            <div className="purchase-info">
+                <b>Comprador</b>
+                <p>Nome: Gabriel Rosin</p>
+                <p>CPF: 123.456.789-10</p>
+            </div>
+            <Button />
+        </div>
     )
 }
