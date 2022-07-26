@@ -1,14 +1,14 @@
 import "./style.css";
 
-export default function Button({ type }) {
+export default function Button({ type, children }) {
     function defineButtonAction(action) {
         switch (action) {
             case "home":
-                return <button>Voltar para Home</button>
+                return <button>{children}</button>
             case "reservar assentos":
-                return <button>Reservar assento(s)</button>
+                return <button>children</button>
             default:
-                return <button className="time">15:00</button>
+                return <button className="time">{children}</button>
         }
     }
 

@@ -10,32 +10,31 @@ export default function Movie() {
             <div className="day">
                 <p>Quinta-feira - 24/06/2022</p>
                 <div className="times">
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
-                    <Button />
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
                 </div>
             </div>
             <div className="day">
                 <p>Quinta-feira - 24/06/2022</p>
                 <div className="times">
-                    <Button />
-                    <Button />
-                    <Button />
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
+                    <Button>15:00</Button>
                 </div>
             </div>
             <Footer img={movie} />

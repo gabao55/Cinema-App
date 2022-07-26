@@ -20,7 +20,7 @@ export default function Success() {
                 <p>Nome: Gabriel Rosin</p>
                 <p>CPF: 123.456.789-10</p>
             </div>
-            <Button type="home" />
+            <Button type="home">Reservar assento(s)</Button>
         </div>
     )
 }
