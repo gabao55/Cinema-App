@@ -36,8 +36,8 @@ export default function Movie({ movieId, setSessionId, setSessionsIdList }) {
                             {day.showtimes.map((time) => {
                                 return (
                                     <>  
-                                        <Link to={`/sessao/${time.id}`} style={{ textDecoration: 'none' }}>
-                                            <Button onClick={setSessionId(time.id)}>{time.name}</Button>
+                                        <Link key={time.id} to={`/sessao/${time.id}`} style={{ textDecoration: 'none' }} onClick={() => setSessionId(time.id)}>
+                                            <Button>{time.name}</Button>
                                         </Link>
                                     </>
                                 )

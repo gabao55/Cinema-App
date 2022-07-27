@@ -1,5 +1,6 @@
-import Button from "../Button/Button";
 import "./style.css";
+import Button from "../Button/Button";
+import { Link } from "react-router-dom";
 
 export default function Success() {
     return (
@@ -20,7 +21,9 @@ export default function Success() {
                 <p>Nome: Gabriel Rosin</p>
                 <p>CPF: 123.456.789-10</p>
             </div>
-            <Button type="home">Reservar assento(s)</Button>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+                <Button type="large">Voltar para Home</Button>
+            </Link>
         </div>
     )
 }

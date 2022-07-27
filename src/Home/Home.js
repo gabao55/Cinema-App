@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function Home({ moviesIdList, setMoviesIdList }) {
+export default function Home({ setMoviesIdList, setMovieId }) {
     const [moviesList, setMoviesList] = useState([]);
 
     useEffect(() => {
@@ -23,7 +23,7 @@ export default function Home({ moviesIdList, setMoviesIdList }) {
             <div className="movies">
                 {moviesList.map((movie) => {
                     return (<Link key={movie.id} to={`/filme/${movie.id}`}>
-                        <img key={movie.id} src={movie.posterURL} alt={movie.title} />
+                        <img key={movie.id} src={movie.posterURL} alt={movie.title} onClick={() => setMovieId(movie.id)} />
                     </Link>)
                 })}
             </div>

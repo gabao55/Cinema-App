@@ -1,0 +1,72 @@
+.seats {
+    width: calc(100% - 48px);
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.seats div {
+    width: 26px;
+    height: 26px;
+    margin: 9px 3.5px;
+    font-size: 11px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #C3CFD9;
+    color: #000000;
+    border: 1px solid #808F9D;
+    border-radius: 50%;
+}
+
+.seats-options {
+    width: 100%;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.seats-options > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.option {
+    width: 25px;
+    height: 25px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+}
+
+.seats-options > div p {
+    font-size: 13px;
+    color: #4E5A65;
+}
+
+.form {
+    width: calc(100% - 48px);
+    margin-top: 41px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form label {
+    font-size: 18px;
+    margin-bottom: 5px;
+    color: #293845;
+}
+
+.form input {
+    width: 100%;
+    height: 51px;
+    padding: 0 18px;
+    margin-bottom: 15px;
+    border: 1px solid #D4D4D4;
+    border-radius: 3px;
+}
+
+.form input::placeholder {
+    font-size: 18px;
+    font-style: italic;
+    color: #AFAFAF;
+}
