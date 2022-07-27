@@ -3,24 +3,16 @@ import Footer from "../Footer/Footer";
 import "./style.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
-export default function Movie({ movieId, setSessionId, setSessionsIdList }) {
+export default function Movie() {
+    const { movieId } = useParams();
     const [movieData, setMovieData] = useState([]);
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieId}/showtimes`);
 
-        promise.then((response) => {
-            setMovieData(response.data);
-            const allSessions = response.data.days.map(day => day.showtimes);
-            let allSessionsArray = [];
-            allSessions.map(sessions => sessions.map(session => {
-                allSessionsArray.push(session.id);
-                return session.id
-            }));
-            setSessionsIdList([...allSessionsArray]);
-        });
+        promise.then((response) => setMovieData(response.data));
     }, []);
 
     return (
@@ -36,7 +28,7 @@ export default function Movie({ movieId, setSessionId, setSessionsIdList }) {
                             {day.showtimes.map((time) => {
                                 return (
                                     <>  
-                                        <Link key={time.id} to={`/sessao/${time.id}`} style={{ textDecoration: 'none' }} onClick={() => setSessionId(time.id)}>
+                                        <Link key={time.id} to={`/sessao/${time.id}`} style={{ textDecoration: 'none' }}>
                                             <Button>{time.name}</Button>
                                         </Link>
                                     </>

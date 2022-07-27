@@ -9,23 +9,16 @@ import Success from "./Success/Success";
 import { useState } from "react";
 
 function App() {
-    const [movieId, setMovieId] = useState("");
-    const [moviesIdList, setMoviesIdList] = useState([]);
-    const [sessionId, setSessionId] = useState("");
-    const [sessionsIdList, setSessionsIdList] = useState([]);
+    const [selectedSeatsList, setSelectedSeatsList] = useState([]);
 
     return (
         <>
             <h1>CINEFLEX</h1>
             <BrowserRouter>
                 <Routes>
-                    <Route path="/" element={<Home setMoviesIdList={setMoviesIdList} setMovieId={setMovieId} />} />
-                    {moviesIdList.map((id) => {
-                        return <Route key={id} path={`/filme/${id}`} element={<Movie movieId={movieId} setSessionId={setSessionId} setSessionsIdList={setSessionsIdList} />} />
-                    })}
-                    {sessionsIdList.map(id => {
-                        return <Route key={id} path={`/sessao/${id}`} element={<Session sessionId={sessionId} />} />
-                    })}                    
+                    <Route path="/" element={<Home />} />
+                    <Route path={"/filme/:movieId"} element={<Movie />} />
+                    <Route path={"/sessao/:sessionId"} element={<Session selectedSeatsList={selectedSeatsList} setSelectedSeatsList={setSelectedSeatsList} />} />
                     <Route path="/sucesso" element={<Success />} />
                 </Routes>
             </BrowserRouter>
