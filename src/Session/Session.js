@@ -1,7 +1,8 @@
-export default function Session() {
+export default function Session({ sessionId }) {
+    console.log(sessionId);
     return (
-        <>
-            <h2>Session</h2>
-        </>
+        <div className="content-container">
+            <h2>Session {sessionId}</h2>
+        </div>
     )
 }

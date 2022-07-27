@@ -11,6 +11,7 @@ import { useState } from "react";
 function App() {
     const [moviesIdList, setMoviesIdList] = useState([]);
     const [sessionId, setSessionId] = useState("");
+    const [sessionsIdList, setSessionsIdList] = useState([]);
 
     return (
         <>
@@ -19,9 +20,11 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home moviesIdList={moviesIdList} setMoviesIdList={setMoviesIdList} />} />
                     {moviesIdList.map((id) => {
-                        return <Route key={id} path={`/filme/${id}`} element={<Movie movieId={id} setSessionId={setSessionId} />} />
+                        return <Route key={id} path={`/filme/${id}`} element={<Movie movieId={id} setSessionId={setSessionId} setSessionsIdList={setSessionsIdList} />} />
                     })}
-                    <Route path="/sessao" element={<Session sessionId={sessionId} />} />
+                    {sessionsIdList.map(id => {
+                        return <Route key={id} path={`/sessao/${id}`} element={<Session sessionId={sessionId} />} />
+                    })}                    
                     <Route path="/sucesso" element={<Success />} />
                 </Routes>
             </BrowserRouter>

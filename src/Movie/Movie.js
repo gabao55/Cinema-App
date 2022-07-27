@@ -5,7 +5,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function Movie({ movieId, setSessionId }) {
+export default function Movie({ movieId, setSessionId, setSessionsIdList }) {
     const [movieData, setMovieData] = useState([]);
 
     useEffect(() => {
@@ -13,6 +13,13 @@ export default function Movie({ movieId, setSessionId }) {
 
         promise.then((response) => {
             setMovieData(response.data);
+            const allSessions = response.data.days.map(day => day.showtimes);
+            let allSessionsArray = [];
+            allSessions.map(sessions => sessions.map(session => {
+                allSessionsArray.push(session.id);
+                return session.id
+            }));
+            setSessionsIdList([...allSessionsArray]);
         });
     }, []);
 
@@ -28,8 +35,10 @@ export default function Movie({ movieId, setSessionId }) {
                         <div className="times">
                             {day.showtimes.map((time) => {
                                 return (
-                                    <>
-                                        <Button>{time.name}</Button>
+                                    <>  
+                                        <Link to={`/sessao/${time.id}`} style={{ textDecoration: 'none' }}>
+                                            <Button onClick={setSessionId(time.id)}>{time.name}</Button>
+                                        </Link>
                                     </>
                                 )
                             })}
