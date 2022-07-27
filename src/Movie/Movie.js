@@ -1,43 +1,45 @@
 import Button from "../Button/Button";
 import Footer from "../Footer/Footer";
 import "./style.css";
-import movie from "../assets/image 3.png";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
-export default function Movie() {
+export default function Movie({ movieId, setSessionId }) {
+    const [movieData, setMovieData] = useState([]);
+
+    useEffect(() => {
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${movieId}/showtimes`);
+
+        promise.then((response) => {
+            setMovieData(response.data);
+        });
+    }, []);
+
     return (
         <div className="content-container">
             <h2>Selecione o horário</h2>
-            <div className="day">
-                <p>Quinta-feira - 24/06/2022</p>
-                <div className="times">
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                </div>
-            </div>
-            <div className="day">
-                <p>Quinta-feira - 24/06/2022</p>
-                <div className="times">
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                    <Button>15:00</Button>
-                </div>
-            </div>
-            <Footer img={movie} />
+            {movieData.length === 0 ? 
+            null : 
+            movieData.days.map(day => {
+                return (
+                    <div className="day">
+                        <p key={day.id}>{day.weekday} - {day.date}</p>
+                        <div className="times">
+                            {day.showtimes.map((time) => {
+                                return (
+                                    <>
+                                        <Button>{time.name}</Button>
+                                    </>
+                                )
+                            })}
+                        </div>
+                    </div>
+                )
+            })}
+            <Footer img={movieData.posterURL}>
+                <p>{movieData.title}</p>
+            </Footer>
         </div>
     )
 }

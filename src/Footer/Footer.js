@@ -1,12 +1,11 @@
 import "./style.css"
 
-export default function Footer({ img }) {
+export default function Footer({ img, children }) {
     return (
         <footer>
             <img src={img} alt="Movie banner" />
             <div>
-                <p>Enola Holmes</p>
-                <p>Qunita-feira - 15:00</p>
+                {children}
             </div>
         </footer>
     )
