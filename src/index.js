@@ -10,6 +10,8 @@ import { useState } from "react";
 
 function App() {
     const [selectedSeatsList, setSelectedSeatsList] = useState([]);
+    const [movieData, setMovieData] = useState([]);
+    const [customerData, setCustomerData] = useState({});
 
     return (
         <>
@@ -18,8 +20,8 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path={"/filme/:movieId"} element={<Movie />} />
-                    <Route path={"/sessao/:sessionId"} element={<Session selectedSeatsList={selectedSeatsList} setSelectedSeatsList={setSelectedSeatsList} />} />
-                    <Route path="/sucesso" element={<Success />} />
+                    <Route path={"/sessao/:sessionId"} element={<Session setMovieData={setMovieData} setCustomerData={setCustomerData} selectedSeatsList={selectedSeatsList} setSelectedSeatsList={setSelectedSeatsList} />} />
+                    <Route path="/sucesso" element={<Success movieData={movieData} selectedSeatsList={selectedSeatsList} customerData={customerData} />} />
                 </Routes>
             </BrowserRouter>
         </>

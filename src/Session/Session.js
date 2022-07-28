@@ -9,9 +9,17 @@ const selectedSeatStyle = {backgroundColor: "#8DD7CF", border: "1px solid #1AAE9
 const availableSeatStyle = {backgroundColor: "#C3CFD9", border: "1px solid #7B8B99"};
 const unavailableSeatStyle = {backgroundColor: "#FBE192", border: "1px solid #F7C52B"};
 
-export default function Session({ selectedSeatsList, setSelectedSeatsList }) {
+export default function Session({
+    setMovieData,
+    setCustomerData,
+    selectedSeatsList, 
+    setSelectedSeatsList 
+}) {
     const {sessionId} = useParams();
     const [data, setData] = useState([]);
+    const [selectedSeatsIds, setSelectedSeatsIds] = useState([]);
+    const [customerName, setCustomerName] = useState("");
+    const [customerCPF, setCustomerCPF] = useState("");
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessionId}/seats`);
@@ -37,18 +45,48 @@ export default function Session({ selectedSeatsList, setSelectedSeatsList }) {
         if (selectedSeatsList.includes(seat.name)) {
             const newList = removeItem(seat.name, selectedSeatsList);
             setSelectedSeatsList([...newList]);
+            const newIds = removeItem(seat.id, selectedSeatsIds);
+            setSelectedSeatsIds([...newIds]);
             return
         }
 
         const newList = [...selectedSeatsList];
         newList.push(seat.name);
         setSelectedSeatsList([...newList]);
+        const newIds = [...selectedSeatsIds];
+        newIds.push(seat.id);
+        setSelectedSeatsIds([...newIds]);
     };
 
     function removeItem(value, array) {
         const index = array.indexOf(value);
         array.splice(index, 1);
         return [...array]
+    }
+
+    function renderButton() {
+        if (!customerName || !customerCPF || selectedSeatsList.length === 0) {
+             return (
+                <div onClick={() => alert("Escolha assentos e insira seus dados para prosseguir.")}>
+                    <Button type="large">Reservar assento(s)</Button>
+                </div>
+             )                   
+        } else {
+            return (
+                <Link to="/sucesso" style={{ textDecoration: 'none' }} onClick={() => {
+                    
+                        setMovieData({...data});
+                        const newCustomerData = {
+                            name: customerName,
+                            CPF: customerCPF
+                        };
+                        setCustomerData({...newCustomerData});
+                }}>
+                     <Button type="large">Reservar assento(s)</Button>
+                </Link>
+            )
+        }
+
     }
 
     return (
@@ -77,13 +115,11 @@ export default function Session({ selectedSeatsList, setSelectedSeatsList }) {
             </div>
             <div className="form">
                 <label>Nome do comprador:</label>
-                <input type="text" placeholder="Digite seu nome..."></input>
+                <input type="text" placeholder="Digite seu nome..." onChange={event => setCustomerName(event.target.value)}></input>
                 <label>CPF do comprador:</label>
-                <input type="text" placeholder="Digite seu CPF..."></input>
+                <input type="text" placeholder="Digite seu CPF..." onChange={event => setCustomerCPF(event.target.value)}></input>
             </div>
-            <Link to="/sucesso" style={{ textDecoration: 'none' }}>
-                <Button type="large">Reservar assento(s)</Button>
-            </Link>
+            {renderButton()}
             {
                 data.length === 0 ?
                 null :
