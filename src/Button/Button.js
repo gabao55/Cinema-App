@@ -10,7 +10,6 @@ export default function Button({ type, children }) {
         }
     }
 
-
     return (<>
         {defineButtonAction(type)}
     </>)

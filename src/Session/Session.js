@@ -5,6 +5,10 @@ import { Link, useParams } from "react-router-dom";
 import Footer from "../Footer/Footer";
 import Button from "../Button/Button";
 
+const selectedSeatStyle = {backgroundColor: "#8DD7CF", border: "1px solid #1AAE9E"};
+const availableSeatStyle = {backgroundColor: "#C3CFD9", border: "1px solid #7B8B99"};
+const unavailableSeatStyle = {backgroundColor: "#FBE192", border: "1px solid #F7C52B"};
+
 export default function Session({ selectedSeatsList, setSelectedSeatsList }) {
     const {sessionId} = useParams();
     const [data, setData] = useState([]);
@@ -15,14 +19,23 @@ export default function Session({ selectedSeatsList, setSelectedSeatsList }) {
         promise.then(response => setData(response.data));
     }, []);
 
-    const selectedSeatStyle = {backgroundColor: "#8DD7CF", border: "1px solid #1AAE9E"};
-    const availableSeatStyle = {backgroundColor: "#C3CFD9", border: "1px solid #7B8B99"};
-    const unavailableSeatStyle = {backgroundColor: "#FBE192", border: "1px solid #F7C52B"};
+    function renderSeat(seats) {
+        const seatsJSX = seats.map(seat => {
+            if (seat.isAvailable === false) {
+                return <div style={unavailableSeatStyle} onClick={() => alert("Assento indisponível.")}>{seat.name}</div>
+            } else if (selectedSeatsList.includes(seat.name)) {
+                return <div style={selectedSeatStyle} onClick={() => selectSeat(seat)}>{seat.name}</div>
+            } else {
+                return <div style={availableSeatStyle} onClick={() => selectSeat(seat)}>{seat.name}</div>
+            }
+        });
+
+        return seatsJSX
+    };
 
     function selectSeat(seat) {
         if (selectedSeatsList.includes(seat.name)) {
-            const newList = [...selectedSeatsList];
-            newList.pop(seat.name);
+            const newList = removeItem(seat.name, selectedSeatsList);
             setSelectedSeatsList([...newList]);
             return
         }
@@ -30,18 +43,13 @@ export default function Session({ selectedSeatsList, setSelectedSeatsList }) {
         const newList = [...selectedSeatsList];
         newList.push(seat.name);
         setSelectedSeatsList([...newList]);
-    }
+        console.log(selectedSeatsList);
+    };
 
-    function renderSeat(seats) {
-        const seatsJSX = seats.map(seat => {
-            if (seat.isAvailable === false) {
-                return <div style={unavailableSeatStyle} onClick={() => alert("Assento indisponível.")}>{seat.name}</div>
-            } else {
-                return <div style={availableSeatStyle} onClick={() => selectSeat(seat)}>{seat.name}</div>
-            }
-        });
-
-        return seatsJSX
+    function removeItem(value, array) {
+        const index = array.indexOf(value);
+        array.splice(index, 1);
+        return [...array]
     }
 
     return (
