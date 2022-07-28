@@ -2,7 +2,8 @@ import "./style.css";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
 
-export default function Success({ movieData, selectedSeatsList, customerData }) {
+export default function Success({ movieData, selectedSeatsList, setSelectedSeatsList, customerData }) {
+    // TODO: Create condition to render page only when there are enough data
     return (
         <div className="content-container">
             <h2 className="success-message">Pedido feito<br /> com sucesso</h2>
@@ -20,7 +21,7 @@ export default function Success({ movieData, selectedSeatsList, customerData }) 
                 <p>Nome: {customerData.name}</p>
                 <p>CPF: {customerData.CPF}</p>
             </div>
-            <Link to="/" style={{ textDecoration: 'none' }}>
+            <Link to="/" style={{ textDecoration: 'none' }} onClick={() => setSelectedSeatsList([])}>
                 <Button type="large">Voltar para Home</Button>
             </Link>
         </div>
