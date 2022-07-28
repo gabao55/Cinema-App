@@ -43,7 +43,6 @@ export default function Session({ selectedSeatsList, setSelectedSeatsList }) {
         const newList = [...selectedSeatsList];
         newList.push(seat.name);
         setSelectedSeatsList([...newList]);
-        console.log(selectedSeatsList);
     };
 
     function removeItem(value, array) {
@@ -82,7 +81,9 @@ export default function Session({ selectedSeatsList, setSelectedSeatsList }) {
                 <label>CPF do comprador:</label>
                 <input type="text" placeholder="Digite seu CPF..."></input>
             </div>
-            <Button type="large">Reservar assento(s)</Button>
+            <Link to="/sucesso" style={{ textDecoration: 'none' }}>
+                <Button type="large">Reservar assento(s)</Button>
+            </Link>
             {
                 data.length === 0 ?
                 null :
