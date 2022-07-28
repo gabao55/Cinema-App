@@ -1,8 +1,8 @@
 import "./style.css";
 
 export default function Button({ type, children }) {
-    function defineButtonAction(action) {
-        switch (action) {
+    function defineButtonAction(style) {
+        switch (style) {
             case "large":
                 return <button>{children}</button>
             default:

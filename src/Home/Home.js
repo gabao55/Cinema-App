@@ -7,7 +7,7 @@ export default function Home() {
     const [moviesList, setMoviesList] = useState([]);
 
     useEffect(() => {
-        const promise = axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies");
+        const promise = axios.get("https://mock-api.driven.com.br/api/v7/cineflex/movies");
 
         promise.then((response) => setMoviesList(response.data));
     }, []);

@@ -22,7 +22,7 @@ export default function Session({
     const [customerCPF, setCustomerCPF] = useState("");
 
     useEffect(() => {
-        const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${sessionId}/seats`);
+        const promise = axios.get(`https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${sessionId}/seats`);
 
         promise.then(response => setData(response.data));
     }, []);
@@ -64,6 +64,10 @@ export default function Session({
         return [...array]
     }
 
+    function handleForm(e) {
+        e.preventDefault();
+    }
+
     function renderButton() {
         if (!customerName || !customerCPF || selectedSeatsList.length === 0) {
              return (
@@ -74,7 +78,13 @@ export default function Session({
         } else {
             return (
                 <Link to="/sucesso" style={{ textDecoration: 'none' }} onClick={() => {
-                    
+                        const request = axios.post("https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many",
+                        {
+                            ids: selectedSeatsIds,
+                            name: customerName,
+                            cpf: customerCPF
+                        });
+                        
                         setMovieData({...data});
                         const newCustomerData = {
                             name: customerName,
@@ -86,7 +96,6 @@ export default function Session({
                 </Link>
             )
         }
-
     }
 
     return (
@@ -113,13 +122,15 @@ export default function Session({
                     <p>Indisponível</p>
                 </div>
             </div>
-            <div className="form">
-                <label>Nome do comprador:</label>
-                <input type="text" placeholder="Digite seu nome..." onChange={event => setCustomerName(event.target.value)}></input>
-                <label>CPF do comprador:</label>
-                <input type="text" placeholder="Digite seu CPF..." onChange={event => setCustomerCPF(event.target.value)}></input>
-            </div>
-            {renderButton()}
+            <form onSubmit={handleForm}>
+                <label for="name">Nome do comprador:</label>
+                <input id="name" type="text" placeholder="Digite seu nome..." onChange={e => setCustomerName(e.target.value)} value={customerName} required></input>
+                <label for="CPF">CPF do comprador:</label>
+                <input id="CPF" type="text" placeholder="Digite seu CPF..." onChange={e => setCustomerCPF(e.target.value)} value={customerCPF} required></input>
+                <div>
+                    {renderButton()}
+                </div>
+            </form>
             {
                 data.length === 0 ?
                 null :
