@@ -30,7 +30,7 @@ export default function Session({
     function renderSeat(seats) {
         const seatsJSX = seats.map(seat => {
             if (seat.isAvailable === false) {
-                return <div style={unavailableSeatStyle} onClick={() => alert("Assento indisponível.")}>{seat.name}</div>
+                return <div style={unavailableSeatStyle} onClick={() => alert("Esse assento não está disponível")}>{seat.name}</div>
             } else if (selectedSeatsList.includes(seat.name)) {
                 return <div style={selectedSeatStyle} onClick={() => selectSeat(seat)}>{seat.name}</div>
             } else {
