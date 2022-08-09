@@ -64,6 +64,7 @@ export default function Session({
         return [...array]
     }
 
+    // TODO: Use useNavigate hook from react-router-dom to simplify the submit button and form validation (refactoring)
     function handleForm(e) {
         e.preventDefault();
     }
@@ -123,9 +124,9 @@ export default function Session({
                 </div>
             </div>
             <form onSubmit={handleForm}>
-                <label for="name">Nome do comprador:</label>
+                <label htmlFor="name">Nome do comprador:</label>
                 <input id="name" type="text" placeholder="Digite seu nome..." onChange={e => setCustomerName(e.target.value)} value={customerName} required></input>
-                <label for="CPF">CPF do comprador:</label>
+                <label htmlFor="CPF">CPF do comprador:</label>
                 <input id="CPF" type="text" placeholder="Digite seu CPF..." onChange={e => setCustomerCPF(e.target.value)} value={customerCPF} required></input>
                 <div>
                     {renderButton()}
