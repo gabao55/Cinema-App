@@ -1,6 +1,6 @@
 <h1 align='center'>Cineflex</h1>
 
-Cineflex is a project developed for Driven Software Engineer bootcamp for the React.js and SPA module, you can check the deployed version by this [link](https://cinema-app-xi.vercel.app/). This app consists on simplified system for booking seats on a Cinema, that communicates with a backend server API, which allows user to check the movies, sessions and available seats.
+Cineflex is a project developed for Driven Software Engineer bootcamp for the React.js and SPA module, you can check the deployed version by this [link](https://cinema-app-xi.vercel.app/). This app consists on simplified system for purchasing Cinema tickets, that communicates with a backend server API, which allows user to check the movies, sessions and available seats.
 
 <h2>Project innitialization</h2>
 
