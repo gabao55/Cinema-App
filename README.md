@@ -1,25 +1,75 @@
 <h1 align='center'>Cineflex</h1>
 
-Cineflex is a project developed for Driven Software Engineer bootcamp for the React.js and SPA module, you can check the deployed version by this [link](https://cinema-app-xi.vercel.app/). This app consists on simplified system for purchasing Cinema tickets, that communicates with a backend server API, which allows user to check the movies, sessions and available seats.
+<!-- PROJECT LOGO -->
+<br />
+<p align="center">
+  <a href="https://cinema-app-xi.vercel.app/">
+      <img src="./src/assets/Cineflex Demo.gif" align="center" />
+  </a>
 
-<h2>Project innitialization</h2>
+  <h3 align="center">Cineflex</h3>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <p align="center">
+    Book your tickets for a movie
+    <br />
+    <br />
+    <a href="https://cinema-app-xi.vercel.app/">View Demo</a>
+    <br />
+  </p>
+</p>
 
-<h2>Run project localy</h2>
+## About
 
-In the project directory, you can run:
+This is an web application in which you can for simulating a cinema tickets purchasing platform.
 
-### `npm start`
+- Lists all movies (API request)
+- Lists all sessions (API request)
+- Lists all seats, available or not (API request)
+- Books your picked seats with your Name and CPF for that
+- Shows confirmation message
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+The following tools and frameworks were used in the construction of the project:
 
-<h2>Learn more</h2>
+- React.js
+- Axios
+- React Router Dom
+- Vercel
+- Webpack
+- Babel
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Getting Started
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To get a local copy up and running follow these simple steps.
+
+### Prerequisites
+
+This is an example of how to list things you need to use the software and how to install them.
+* npm
+```sh
+npm install npm@latest -g
+```
+
+### Installation
+
+1. Clone this front-end repo
+```sh
+git clone https://github.com/gabao55/Cinema-App
+```
+2. Install NPM packages for the repo
+```sh
+npm install
+```
+
+### Running
+
+1. On the created clone repo use the following command
+```sh
+npm start
+```
+
+<!-- Developer -->
+## Developer
+
+* [Gabriel Salateo Rosin ](https://github.com/gabao55)
