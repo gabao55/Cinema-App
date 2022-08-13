@@ -55,7 +55,7 @@ npm install npm@latest -g
 
 1. Clone this front-end repo
 ```sh
-git clone https://github.com/gabao55/Cinema-App
+git clone https://github.com/gabao55/Cinema-App.git
 ```
 2. Install NPM packages for the repo
 ```sh
